@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chollo Tracker</title>
+<meta name="description" content="Mini web para guardar y filtrar chollos: tecnología, móviles, zapatillas de montaña y más.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Chollo Tracker</h1>
+  <p>Guarda chollos, compara precios y no se te escape ninguna rebaja.</p>
+</header>
+
+<main>
+  <section class="form-card" aria-labelledby="add-title">
+    <h2 id="add-title">Añadir chollo</h2>
+    <form id="deal-form">
+      <label>Producto
+        <input type="text" id="title" required maxlength="120" placeholder="Ej: Zapatillas Columbia Peakfreak">
+      </label>
+      <div class="row">
+        <label>Precio (&euro;)
+          <input type="number" id="price" min="0" step="0.01" required placeholder="59.90">
+        </label>
+        <label>Precio anterior (&euro;, opcional)
+          <input type="number" id="old-price" min="0" step="0.01" placeholder="129.99">
+        </label>
+      </div>
+      <div class="row">
+        <label>Tienda
+          <input type="text" id="store" maxlength="60" placeholder="Amazon, Privé...">
+        </label>
+        <label>Categoría
+          <select id="category">
+            <option value="tech">Tecnología</option>
+            <option value="phones">Móviles</option>
+            <option value="mountain">Montaña</option>
+            <option value="gaming">Gaming</option>
+            <option value="other">Otros</option>
+          </select>
+        </label>
+      </div>
+      <label>Enlace (opcional)
+        <input type="url" id="url" placeholder="https://...">
+      </label>
+      <button type="submit">Guardar chollo</button>
+    </form>
+  </section>
+
+  <section aria-labelledby="list-title">
+    <div class="list-header">
+      <h2 id="list-title">Mis chollos</h2>
+      <input type="search" id="search" placeholder="Buscar..." aria-label="Buscar chollos">
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filtrar por categoría">
+      <button data-cat="all" class="active">Todos</button>
+      <button data-cat="tech">Tecnología</button>
+      <button data-cat="phones">Móviles</button>
+      <button data-cat="mountain">Montaña</button>
+      <button data-cat="gaming">Gaming</button>
+      <button data-cat="other">Otros</button>
+    </div>
+    <ul id="deal-list" class="deal-list"></ul>
+    <p id="empty" class="empty">Todavía no hay chollos. Añade el primero arriba.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Chollo Tracker - los datos se guardan solo en tu navegador (localStorage).</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
